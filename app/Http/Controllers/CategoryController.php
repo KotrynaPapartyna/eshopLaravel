@@ -60,8 +60,8 @@ class CategoryController extends Controller
 
         $validateVar = $request->validate([
 
-            'title' => 'required',
-            'description' => 'required',
+            'title' => 'required|min:8|max:200',
+            'description' => 'required|min:8|max:400',
             ]);
 
 
@@ -112,8 +112,8 @@ class CategoryController extends Controller
     {
         $validateVar = $request->validate([
 
-            'title' => 'required',
-            'description' => 'required',
+            'title' => 'required|min:8|max:200',
+            'description' => 'required|min:8|max:400',
             ]);
 
 

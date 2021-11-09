@@ -93,26 +93,22 @@
                             </div>
                         </div>
 
-                        {{--IMAGE--}}
+                        {{--img--}}
                         <div class="form-group row">
-                            <label for="image" class="col-sm-3 col-form-label" >{{ __('PRODUCT IMAGE') }}</label>
-                            <div class="col-md-6">
-                                <input id="image"type="text" class="form-control @error('image') is-invalid @enderror " value="{{ old('image') }}" name="image" autofocus>
-                                @error('image')
-                                <span role="alert" class="invalid-feedback">
-                                    <strong>*{{$message}}</strong>
-                                </span>
-                                @enderror
+                            <label for="image" class="col-sm-3 col-form-label">{{ __('PRODUCT IMAGE') }}</label>
+                        <div class="col-md-6">
+                            <input id="image" type="file" class="form-control" name="image">
                             </div>
                         </div>
 
+
                           {{--category parinkimas
                         <div class="form-group row">
-                            <label for="category_id" class="col-sm-3 col-form-label">{{ __('Category') }}</label>
+                            <label for="category_id" class="col-sm-3 col-form-label">{{ __('CATEGORY') }}</label>
                             <div class="col-md-6">
                                 <select class="form-control" name="category_id">
 
-                                    @foreach (categories $category)
+                                    @foreach ($categories $category)
 
                                         <option value="{{$category->id}}" @if($category->id == $product->category_id) selected @endif >{{$category->title}}</option>
                                     @endforeach

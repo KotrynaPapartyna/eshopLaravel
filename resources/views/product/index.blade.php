@@ -87,7 +87,6 @@
                 <th>@sortablelink('excertpt ', 'Excertpt ' )</th>
                 <th>@sortablelink('description', 'Description' )</th>
                 <th>@sortablelink('price', 'Price' )</th>
-                <th>Image</th>
                 <th>@sortablelink('category_id', 'Category' )</th>
                 <th>ACTIONS</th>
             </tr>
@@ -100,7 +99,6 @@
                 <td> {{$product->excertpt }}</td>
                 <td> {{$product->description}}</td>
                 <td> {{$product->price}}</td>
-                <td> {{$product->image}}</td>
                 <td> {{$product->productCategory->title}}</td>
 
 

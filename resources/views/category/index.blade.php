@@ -45,6 +45,14 @@
                 </form>
             </th>
 
+            {{--PRODUCTS MYGTUKAS--}}
+            <th>
+                <form method="GET" action="{{route('product.index') }}">
+                    @csrf
+                    <button class="btn btn-secondary" type="submit">ALL PRODUCTS LIST</button>
+                </form>
+            </th>
+
 
         {{--filtravimas pagal pavadinima--}}
         <th>

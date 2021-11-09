@@ -49,18 +49,19 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="image" class="col-sm-3 col-form-label" >{{ __('PRODUCT IMAGE') }}</label>
-                                <div class="col-md-6">
-                                    <p>{{$product->image}}</p>
-                                </div>
+                            <label for="image" class="col-sm-3 col-form-label" >{{ __('Product Image') }}</label>
+                            <div class="col-md-6">
+                                <img src="{{$product->image}}" alt="{{$product->title}}" style="width:200px">
+                            </div>
                         </div>
 
-                        {{--<div class="form-group row">
-                            <label for="shop_id" class="col-sm-3 col-form-label" >{{ __('SHOP Category')}}</label>
+
+                        <div class="form-group row">
+                            <label for="category_id" class="col-sm-3 col-form-label" >{{ __('SHOP Category')}}</label>
                             <div class="col-md-6">
-                                <p>{{$category->categoryShop->title}}</p>
+                                <p>{{$product->productCategory->title}}</p>
                             </div>
-                        </div>--}}
+                        </div>
 
                     {{--vienos kategorijos sugeneravimas PDF--}}
                     <a href="{{route('product.pdfproduct', [$product])}}" class="btn btn-dark">EXPORT PRODUCT TO PDF</a>

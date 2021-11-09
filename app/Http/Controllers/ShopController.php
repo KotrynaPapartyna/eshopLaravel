@@ -52,9 +52,9 @@ class ShopController extends Controller
 
             'title' => 'required|min:6|max:225|alpha',
             'description' => 'required|min:6|max:500|alpha',
-            'email' => 'required',
-            'phone' => 'required',
-            'country' => 'required'
+            'email' => 'required|unique:user,email_address|max:20',
+            'phone' => 'required|numeric|phone_number|size:11',
+            'country' => 'required|min:6|max:30|alpha',
             ]);
 
 
@@ -104,9 +104,9 @@ class ShopController extends Controller
 
             'title' => 'required|min:6|max:225|alpha',
             'description' => 'required|min:6|max:500|alpha',
-            'email' => 'required',
-            'phone' => 'required',
-            'country' => 'required'
+            'email' => 'required|unique:user,email_address|max:20',
+            'phone' => 'required|numeric|phone_number|size:11',
+            'country' => 'required|min:6|max:30|alpha',
             ]);
 
 

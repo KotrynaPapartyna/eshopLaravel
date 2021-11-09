@@ -42,23 +42,23 @@
             <a class="btn btn-dark" href="{{route('shop.pdf')}}"> Export All SHOPS List to PDF </a>
         <th>
 
+        {{--CATEGORIES MYGTUKAS--}}
+        <th>
+            <form method="GET" action="{{route('category.index') }}">
+                @csrf
+                <button class="btn btn-secondary" type="submit">ALL CATEGORIES LIST</button>
+            </form>
+        </th>
 
-        {{--KNYGU MYGTUKAS
-            <th>
-                <form method="GET" action="{{route('book.index') }}">
-                    @csrf
-                    <button class="btn btn-secondary" type="submit">ALL BOOKS LIST</button>
-                </form>
-            </th>--}}
+        {{--PRODUCTS MYGTUKAS--}}
+        <th>
+            <form method="GET" action="{{route('product.index') }}">
+                @csrf
+                <button class="btn btn-secondary" type="submit">ALL PRODUCTS LIST</button>
+            </form>
+        </th>
 
-        {{--PAIESKOS FORMA
-            <th>
-                <form action="{{route("book.search")}}" method="GET">
-                    @csrf
-                    <input type="text" name="search" placeholder="Enter searc key"/>
-                    <button type="submit">SEARCH</button>
-                </form>
-            </th>--}}
+
         </tr>
     </table>
 

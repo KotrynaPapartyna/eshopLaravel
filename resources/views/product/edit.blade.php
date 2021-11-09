@@ -60,10 +60,10 @@
 
                             {{--DESCRIPTION--}}
                             <div class="form-group row">
-                                <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('CATEGORY DESCRIPTION') }}</label>
+                                <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('PRODUCT DESCRIPTION') }}</label>
 
                                 <div class="col-md-6">
-                                    <textarea class="form- control summernote" name="description" value="{!!$category->description!!}" required>
+                                    <textarea class="form- control summernote" name="description" value="{!!$product->description!!}" required>
 
                                     </textarea>
                                             @error('description')
@@ -87,17 +87,16 @@
                                 </div>
                             </div>
 
-                            {{--image--}}
+
+                            {{--Image---}}
                             <div class="form-group row">
                                 <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('PRODUCT IMAGE') }}</label>
+
                                 <div class="col-md-6">
-                                    <input id="image"type="text" class="form-control @error('image') is-invalid @enderror " value="{{$product->image}}" name="image" autofocus>
-                                        @error('image')
-                                        <span role="alert" class="invalid-feedback">
-                                            <strong>*{{$message}}</strong>
-                                        </span>
-                                        @enderror
+                                    <input id="image" type="file" class="form-control" name="image">
                                 </div>
+
+                                <img src="{{$product->image}}"/>
                             </div>
 
                             {{--kategorijos parinkimas--}}
@@ -111,7 +110,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                            </div>--}}
+                            </div>
 
 
                             <div class="form-group row mb-0">

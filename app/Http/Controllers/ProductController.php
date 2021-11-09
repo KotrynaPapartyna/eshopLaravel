@@ -61,16 +61,27 @@ class ProductController extends Controller
         $product->excertpt =$request->excertpt;
         $product->description=$request->description;
         $product->price =$request->price;
-        $product->image =$request->image;
+        //$product->image =$request->image;
+
+        if ($request->has('image')) {
+
+            $imageName=time().'.'.$request->logo->extension();
+            $product->logo= '/images/'.$imageName;
+
+            $request->logo->move(public_path('images'), $imageName);
+            } else {
+                $product->logo= '/images/placeholder.png';
+            }
+
         $product->category_id =$request->category_id;
 
         $validateVar = $request->validate([
 
             'title' => 'required|min:6|max:225|alpha',
-            'excertpt ' => 'required',
-            'description ' => 'required',
-            'price ' => 'required',
-            'image  ' => 'required',
+            'excertpt ' => 'required|min:8|max:200',
+            'description ' => 'required|min:8|max:400',
+            'price ' => 'required|integer',
+            'image  ' => 'mimes:jpeg,jpg,png,gif|required|max:10000',
 
             ]);
 
@@ -123,11 +134,10 @@ class ProductController extends Controller
         $validateVar = $request->validate([
 
             'title' => 'required|min:6|max:225|alpha',
-            'excertpt ' => 'required',
-            'description ' => 'required',
-            'price ' => 'required',
-            'image  ' => 'required',
-
+            'excertpt ' => 'required|min:8|max:200',
+            'description ' => 'required|min:8|max:400',
+            'price ' => 'required|integer',
+            'image  ' => 'mimes:jpeg,jpg,png,gif|required|max:10000',
             ]);
 
         $product->save();
