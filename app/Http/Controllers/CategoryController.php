@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Shop;
+use Validator;
 use Illuminate\Http\Request;
 
 use PDF;
@@ -52,28 +53,78 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $shops=Shop::all();
-        $shop_count=$shops->count();
 
-        $category=new Category();
+        //$shops=Shop::all();
 
+        $input = [
+            'categoryTitle' => $request->categoryTitle,
+            'categoryDescription' => $request->categoryDescription,
+            'categoryShops' => $request->categoryShops,
 
-        $validateVar = $request->validate([
+        ];
 
-            'title' => 'required|min:8|max:200',
-            'description' => 'required|min:8|max:400',
-            ]);
+        $rules = [
+            'categoryTitle' => 'required|min:3',
+            'categoryDescription' => 'required|min:3',
 
+        ];
 
-        $category->title=$request->title;
-        $category->description=$request->description;
+        $validator = Validator::make($input, $rules);
 
-        $category->shop_id = $request->shop_id;
+        if($validator->passes()) {
+            $category = new Category;
 
-        $category->save();
+            $category->title = $request->categoryTitle;
+            $category->description = $request->categoryDescription;
+            $category->shop_id = $request->shop_id;
 
-            return redirect()->route("category.index");
+            $category->save();
+
+            $success = [
+                'message' => '[Back-End] Category added successfully',
+                'categoryID' => $category->id,
+                'categoryTitle' => $category->title,
+                'categoryDescription' => $category->description,
+                'categoryShop' => $category->shop_id,
+            ];
+
+            $success_json = response()->json($success);
+
+            return $success_json;
+        }
+
+        $error = [
+            'error' => $validator->messages()->get("*")
+        ];
+
+        $error_json = response()->json($error);
+
+        return $error_json;
+
     }
+
+        // senas store
+        //$shops=Shop::all();
+        //$shop_count=$shops->count();
+
+        //$category=new Category();
+
+
+        //$validateVar = $request->validate([
+
+            //'title' => 'required|min:8|max:200',
+            //'description' => 'required|min:8|max:400',
+            //]);
+
+
+        //$category->title=$request->title;
+        //$category->description=$request->description;
+
+        //$category->shop_id = $request->shop_id;
+
+        //$category->save();
+
+            //return redirect()->route("category.index");
 
 
     /**

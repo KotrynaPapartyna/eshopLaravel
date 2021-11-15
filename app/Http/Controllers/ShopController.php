@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Shop;
 use App\Category;
+use Validator;
 use Illuminate\Http\Request;
 
 use PDF;
@@ -39,29 +40,83 @@ class ShopController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $shop=new Shop;
+    //{
 
-        $shop->title =$request->title ;
-        $shop->description=$request->description;
-        $shop->email =$request->email ;
-        $shop->phone =$request->phone ;
-        $shop->country =$request->country ;
+    //     $input = [
+    //         'shopTitle' => $request->shopTitle,
+    //         'shopDescription' => $request->shopDescription,
+    //         'shopEmail' => $request->shopEmail,
+    //         'shopPhone' => $request->shopPhone,
+    //         'shopCountry' => $request->shopCountry,
+    //     ];
 
-        $validateVar = $request->validate([
+    //     $rules = [
+    //         'shopTitle' => 'required|max:255',
+    //         'shopDescription' => 'required|min:5',
+    //         'shopEmail' => 'required|email|max:255',
+    //         'shopPhone' => 'required|numerics|digits:11',
+    //         'shopCountry' => 'min:3|max:50',
+    //     ];
 
-            'title' => 'required|min:6|max:225|alpha',
-            'description' => 'required|min:6|max:500|alpha',
-            'email' => 'required|unique:user,email_address|max:20',
-            'phone' => 'required|numeric|phone_number|size:11',
-            'country' => 'required|min:6|max:30|alpha',
-            ]);
+    //     $validator = Validator::make($input, $rules);
+
+    //     if($validator->passes()) {
+
+    //         $shop = new Shop;
+    //         $shop-> title = $request->shopTitle;
+    //         $shop-> description = $request->shopDescription;
+    //         $shop-> email = $request->shopEmail;
+    //         $shop-> phone = $request->shopPhone;
+    //         $shop-> country = $request->shopCountry;
+
+    //         $shop->save();
+
+    //         $success = [
+    //             'message' => '[Back-End] Shop added successfully',
+    //             'shopID' => $shop->id,
+    //             'shopTitle' => $shop->title,
+    //             'shopDescription' => $shop->description,
+    //             'shopPhone' => $shop->phone,
+    //             'shopCountry' => $shop->country,
+    //         ];
+
+    //         $success_json = response()->json($success);
+
+    //         return $success_json;
+    //     }
+
+    //     $error = [
+    //         'error' => $validator->messages()->get("*")
+    //     ];
+
+    //     $error_json = response()->json($error);
+
+    //     return $error_json;
+
+   {
+
+    $shop=new Shop;
+
+    $shop->title =$request->title ;
+    $shop->description=$request->description;
+    $shop->email =$request->email ;
+    $shop->phone =$request->phone ;
+    $shop->country =$request->country ;
+
+    $validateVar = $request->validate([
+
+        'title' => 'required',
+        'description' => 'required',
+        'email' => 'required',
+        'phone' => 'required',
+        'country' => 'required',
+        ]);
 
 
-        $shop->save();
+    $shop->save();
 
-        return redirect()->route("shop.index");
-    }
+    return redirect()->route("shop.index");
+   }
 
     /**
      * Display the specified resource.
@@ -100,14 +155,14 @@ class ShopController extends Controller
         $shop->phone =$request->phone ;
         $shop->country =$request->country ;
 
-        $validateVar = $request->validate([
+        //$validateVar = $request->validate([
 
-            'title' => 'required|min:6|max:225|alpha',
-            'description' => 'required|min:6|max:500|alpha',
-            'email' => 'required|unique:user,email_address|max:20',
-            'phone' => 'required|numeric|phone_number|size:11',
-            'country' => 'required|min:6|max:30|alpha',
-            ]);
+            //'title' => 'required|min:6|max:225|alpha',
+            //'description' => 'required|min:6|max:500|alpha',
+            //'email' => 'required|max:20',
+            //'phone' => 'required|numeric|ize:11',
+            //'country' => 'required|min:6|max:30|alpha',
+           // ]);
 
 
         $shop->save();

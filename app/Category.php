@@ -20,7 +20,6 @@ class Category extends Model
 
     public function categoryShop() {
         return $this->belongsTo(Shop::class, "shop_id", "id");
-
     }
 
 }

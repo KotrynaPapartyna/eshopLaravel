@@ -6,6 +6,50 @@
 
 <div class="container">
 
+    <div class="ajaxForm">
+
+        <div class="form-group row">
+            <label for="shopTitle" class="col-md-4 col-form-label text-md-right">SHOP TITLE</label>
+            <input class="form-control col-md-4" type="text" name="shopTitle" id="shopTitle"/>
+            <span class="invalid-feedback shopTitle" role="alert">
+            </span>
+        </div>
+
+        <div class="form-group row">
+            <label for="shopDescription" class="col-md-4 col-form-label text-md-right">SHOP DESCRIPTION</label>
+            <textarea class="form-control col-md-4" name="shopDescription" id="shopDescription">
+            </textarea>
+            <span class="invalid-feedback shopDescription" role="alert">
+            </span>
+        </div>
+
+        <div class="form-group row">
+            <label for="shopEmail" class="col-md-4 col-form-label text-md-right">SHOP EMAIL</label>
+            <input class="form-control col-md-4" type="text" name="shopEmail" id="shopEmail" />
+            <span class="invalid-feedback shopEmail" role="alert">
+            </span>
+        </div>
+
+        <div class="form-group row">
+            <label for="shopPhone" class="col-md-4 col-form-label text-md-right">SHOP PHONE</label>
+            <input class="form-control col-md-4" type="text" name="shopPhone" id="shopPhone" />
+            <span class="invalid-feedback shopPhone" role="alert">
+            </span>
+        </div>
+
+        <div class="form-group row">
+            <label for="shopCountry" class="col-md-4 col-form-label text-md-right">SHOP COUNTRY</label>
+            <input class="form-control col-md-4" type="text" name="shopCountry" id="shopCountry" />
+            <span class="invalid-feedback shopCountry" role="alert">
+            </span>
+        </div>
+
+        <div class="form-group row">
+            <button class="btn btn-primary" type="submit" id="add" >ADD SHOP WITH AJAX</button>
+        </div>
+
+    </div>
+
     {{--error zinute jeigu negalima istrinti--}}
     @if(session()->has('error_message'))
     <div class="alert alert-danger">
@@ -60,13 +104,12 @@
 
 
         </tr>
+
     </table>
 
 
-    <table class="table table-striped table-hover table-sm">
-        <tr>
-
-            <tr class="table-secondary">
+    <table id="shops" class="table table-striped table-hover table-sm">
+            <tr>
                 <th>@sortablelink('id', 'ID')</th>
                 <th>@sortablelink('title', 'Title')</th>
                 <th>@sortablelink('description', 'Description' )</th>
@@ -78,7 +121,7 @@
 
 
         @foreach ($shops as $shop)
-
+            <tr class="shop">
                 <td> {{$shop->id }}</td>
                 <td> {{$shop->title}}</td>
                 <td> {{$shop->description}}</td>
@@ -86,18 +129,18 @@
                 <td> {{$shop->phone}}</td>
                 <td> {{$shop->country}}</td>
 
-                    <td>
-                        <th><a class="btn btn-warning" href="{{route('shop.show', [$shop]) }}">SHOW</a></th>
-                        <th><a class="btn btn-info" href="{{route('shop.edit', [$shop]) }}">EDIT</a></th>
+                <td>
+                    <th><a class="btn btn-warning" href="{{route('shop.show', [$shop]) }}">SHOW</a></th>
+                    <th><a class="btn btn-info" href="{{route('shop.edit', [$shop]) }}">EDIT</a></th>
 
-                        <th>
+                    <th>
                         <form method="POST" action="{{route('shop.destroy', [$shop]) }}">
                             @csrf
                             <button class="btn btn-danger" type="submit">DELETE</button>
                         </form>
                         </th>
-                    </td>
-        </tr>
+                </td>
+            </tr>
 
         @endforeach
 
@@ -111,6 +154,16 @@
 
 </div>
 
+
+<script>
+    //AJAXUI
+    </script>
+
+<script>
+    $(document).ready(function() {
+    $('.summernote').summernote();
+    });
+</script>
 
 
 @endsection

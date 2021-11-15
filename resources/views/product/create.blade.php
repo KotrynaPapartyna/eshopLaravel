@@ -102,21 +102,22 @@
                         </div>
 
 
-                          {{--category parinkimas
+                        {{--category parinkimas--}}
                         <div class="form-group row">
-                            <label for="category_id" class="col-sm-3 col-form-label">{{ __('CATEGORY') }}</label>
+                            <label for="category_id" class="col-sm-3 col-form-label">{{ __('Category title') }}</label>
                             <div class="col-md-6">
                                 <select class="form-control" name="category_id">
 
-                                    @foreach ($categories $category)
-
-                                        <option value="{{$category->id}}" @if($category->id == $product->category_id) selected @endif >{{$category->title}}</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{$category->id}}">{{$category->title}}</option>
                                     @endforeach
                                 </select>
                             </div>
-                        </div>--}}
-
                         </div>
+
+
+
+                    </div>
 
                         <button class="btn btn-info" type="submit">SAVE NEW PRODUCT</button>
 

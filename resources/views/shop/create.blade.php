@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-                                 {{--SUTVARKYTAS--}}
+
 
 <div class="container">
 
 
-    @if ($errors->any())
-    {{-- klaidu bus daugau nei 1 --}}
+  {{--   @if ($errors->any())
+    klaidu bus daugau nei 1
 
         @foreach ($errors->all() as $error)
         <div class="alert alert-danger">
@@ -16,15 +16,8 @@
             </ul>
         </div>
         @endforeach
-    @endif
+    @endif--}}
 
-
-
-    @error('author_id')
-        <div class="alert alert-danger">
-            {{$message}}
-        </div>
-    @enderror
 
 
     <div class="row justify-content-center">
@@ -41,11 +34,11 @@
                             <label for="title" class="col-sm-3 col-form-label" >{{ __('SHOP TITLE') }}</label>
                             <div class="col-md-6">
                                 <input id="title"type="text" class="form-control @error('title') is-invalid @enderror " value="{{ old('title') }}" name="title" autofocus>
-                                @error('title')
+                                {{--@error('title')
                                 <span role="alert" class="invalid-feedback">
                                     <strong>*{{$message}}</strong>
                                 </span>
-                                @enderror
+                                @enderror--}}
                             </div>
                         </div>
 
@@ -57,11 +50,11 @@
                                 <textarea class="form- control summernote" name="description" required>
 
                                 </textarea>
-                                        @error('description')
+                                        {{--@error('description')
                                         <span role="alert" class="invalid-feedback">
                                             <strong>*{{$message}}</strong>
                                         </span>
-                                        @enderror
+                                        @enderror--}}
                             </div>
                         </div>
 
@@ -70,11 +63,11 @@
                             <label for="email" class="col-sm-3 col-form-label" >{{ __('SHOP EMAIL') }}</label>
                             <div class="col-md-6">
                                 <input id="email"type="text" class="form-control @error('email') is-invalid @enderror " value="{{ old('email') }}" name="email" autofocus>
-                                @error('email')
+                               {{-- @error('email')
                                 <span role="alert" class="invalid-feedback">
                                     <strong>*{{$message}}</strong>
                                 </span>
-                                @enderror
+                                @enderror--}}
                             </div>
                         </div>
 
@@ -83,11 +76,11 @@
                             <label for="phone" class="col-sm-3 col-form-label" >{{ __('SHOP PHONE') }}</label>
                             <div class="col-md-6">
                                 <input id="phone"type="text" class="form-control @error('phone') is-invalid @enderror " value="{{ old('phone') }}" name="phone" autofocus>
-                                @error('phone')
+                                {{--@error('phone')
                                 <span role="alert" class="invalid-feedback">
                                     <strong>*{{$message}}</strong>
                                 </span>
-                                @enderror
+                                @enderror--}}
                             </div>
                         </div>
 
@@ -96,11 +89,11 @@
                             <label for="country" class="col-sm-3 col-form-label" >{{ __('SHOP COUNTRY') }}</label>
                             <div class="col-md-6">
                                 <input id="country"type="text" class="form-control @error('country') is-invalid @enderror " value="{{ old('country') }}" name="country" autofocus>
-                                @error('country')
+                                {{--@error('country')
                                 <span role="alert" class="invalid-feedback">
                                     <strong>*{{$message}}</strong>
                                 </span>
-                                @enderror
+                                @enderror--}}
                             </div>
                         </div>
 
